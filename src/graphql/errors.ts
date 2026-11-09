@@ -42,6 +42,9 @@ export function maskError(error: unknown): GraphQLError {
   if (error instanceof GraphQLError && error.originalError instanceof VetApiError) {
     return toGraphQLError(error.originalError, { nodes: error.nodes, path: error.path });
   }
+  if (error instanceof GraphQLError && error.originalError instanceof GraphQLError) {
+    return error;
+  }
   return new GraphQLError("Unexpected error.", {
     extensions: { code: "INTERNAL_SERVER_ERROR" },
   });
