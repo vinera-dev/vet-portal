@@ -4,6 +4,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/book", label: "Book" },
   { href: "/appointment", label: "My appointment" },
+  { href: "/chat", label: "Chat" },
 ];
 
 export function SiteHeader() {
