@@ -395,3 +395,9 @@ a {
   margin: 0;
   padding-left: var(--space-4);
 }
+
+.user-menu {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { UserMenu } from "@/components/UserMenu";
 
 const links = [
   { href: "/", label: "Home" },
@@ -23,6 +24,7 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
+        <UserMenu />
       </div>
     </header>
   );
