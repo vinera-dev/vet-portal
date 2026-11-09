@@ -16,7 +16,8 @@
     "pretypecheck": "npm run codegen",
     "pretest": "npm run codegen",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "graphql": "^17.1.0",

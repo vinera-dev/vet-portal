@@ -2,9 +2,8 @@ import { createServer } from "node:http";
 import { createFakeBackend } from "./core.ts";
 
 const port = Number(process.env.FAKE_BACKEND_PORT ?? 8765);
-const backend = createFakeBackend({
-  chatFailure: () => process.env.FAKE_CHAT_FAIL === "1",
-});
+let chatFailing = false;
+const backend = createFakeBackend({ chatFailure: () => chatFailing });
 
 const server = createServer((req, res) => {
   const chunks: Buffer[] = [];
@@ -13,7 +12,17 @@ const server = createServer((req, res) => {
     const url = new URL(req.url ?? "/", "http://127.0.0.1");
     if (url.pathname === "/__reset" && req.method === "POST") {
       backend.reset();
+      chatFailing = false;
       res.writeHead(204).end();
+      return;
+    }
+    if (url.pathname === "/__chat-failure" && req.method === "POST") {
+      chatFailing = url.searchParams.get("on") === "1";
+      res.writeHead(204).end();
+      return;
+    }
+    if (url.pathname === "/__health") {
+      res.writeHead(200).end("ok");
       return;
     }
     const raw = Buffer.concat(chunks).toString("utf8");
