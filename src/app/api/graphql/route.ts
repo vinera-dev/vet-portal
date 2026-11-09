@@ -1,6 +1,7 @@
 import { createGraphqlServer } from "@/graphql/server";
+import { getVetApi } from "@/server/config";
 
-const yoga = createGraphqlServer({ useRuntimeFetch: true });
+const yoga = createGraphqlServer({ api: getVetApi(), useRuntimeFetch: true });
 
 export const dynamic = "force-dynamic";
 

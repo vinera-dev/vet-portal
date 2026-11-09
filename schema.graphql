@@ -25,6 +25,7 @@ scalar LocalDateTime
 
 type Query {
   clinic: Clinic!
+  slots(day: Date!): [Slot!]!
 }
 
 enum ServiceType {

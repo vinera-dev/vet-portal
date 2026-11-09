@@ -37,5 +37,6 @@ export const typeDefs = `
 
   type Query {
     clinic: Clinic!
+    slots(day: Date!): [Slot!]!
   }
 `;

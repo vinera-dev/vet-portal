@@ -1,1 +1,5 @@
-export type GraphqlContext = Record<string, never>;
+import type { VetApi } from "@/server/vet-api/client";
+
+export interface GraphqlContext {
+  api: VetApi;
+}
