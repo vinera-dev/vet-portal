@@ -287,3 +287,17 @@ a {
   gap: var(--space-4);
   margin: var(--space-6) 0;
 }
+
+.details {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-4);
+}
+
+.details dt {
+  font-weight: 600;
+}
+
+.details dd {
+  margin: 0;
+}
