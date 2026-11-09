@@ -12,6 +12,13 @@ enum AppointmentStatus {
   SCHEDULED
 }
 
+input BookAppointmentInput {
+  petName: String!
+  service: ServiceType!
+  start: LocalDateTime!
+  tutorName: String!
+}
+
 type Clinic {
   closesAt: String!
   name: String!
@@ -22,6 +29,10 @@ type Clinic {
 scalar Date
 
 scalar LocalDateTime
+
+type Mutation {
+  bookAppointment(input: BookAppointmentInput!): Appointment!
+}
 
 type Query {
   clinic: Clinic!

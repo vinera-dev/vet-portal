@@ -35,8 +35,19 @@ export const typeDefs = `
     status: AppointmentStatus!
   }
 
+  input BookAppointmentInput {
+    tutorName: String!
+    petName: String!
+    service: ServiceType!
+    start: LocalDateTime!
+  }
+
   type Query {
     clinic: Clinic!
     slots(day: Date!): [Slot!]!
+  }
+
+  type Mutation {
+    bookAppointment(input: BookAppointmentInput!): Appointment!
   }
 `;
