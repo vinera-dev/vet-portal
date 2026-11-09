@@ -1,0 +1,40 @@
+type Appointment {
+  id: ID!
+  petName: String!
+  service: ServiceType!
+  start: LocalDateTime!
+  status: AppointmentStatus!
+  tutorName: String!
+}
+
+enum AppointmentStatus {
+  CANCELLED
+  SCHEDULED
+}
+
+type Clinic {
+  closesAt: String!
+  name: String!
+  opensAt: String!
+  slotMinutes: Int!
+}
+
+scalar Date
+
+scalar LocalDateTime
+
+type Query {
+  clinic: Clinic!
+}
+
+enum ServiceType {
+  CONSULTATION
+  EXAM
+  GROOMING
+  VACCINATION
+}
+
+type Slot {
+  start: LocalDateTime!
+  time: String!
+}

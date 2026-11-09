@@ -9,6 +9,12 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "jest",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen:check": "npm run codegen && git diff --exit-code -- schema.graphql",
+    "predev": "npm run codegen",
+    "prebuild": "npm run codegen",
+    "pretypecheck": "npm run codegen",
+    "pretest": "npm run codegen",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -24,6 +30,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
     "@graphql-codegen/cli": "^8.0.0",
+    "@graphql-codegen/schema-ast": "^7.0.0",
     "@graphql-codegen/typed-document-node": "^8.0.0",
     "@graphql-codegen/typescript": "^7.0.0",
     "@graphql-codegen/typescript-operations": "^7.0.0",

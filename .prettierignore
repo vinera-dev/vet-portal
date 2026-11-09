@@ -5,3 +5,4 @@ package-lock.json
 src/gql
 playwright-report
 test-results
+schema.graphql

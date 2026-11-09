@@ -1,7 +1,11 @@
 import { createGraphqlServer } from "@/graphql/server";
 
-const { handleRequest } = createGraphqlServer({ useRuntimeFetch: true });
+const yoga = createGraphqlServer({ useRuntimeFetch: true });
 
 export const dynamic = "force-dynamic";
 
-export { handleRequest as GET, handleRequest as POST, handleRequest as OPTIONS };
+function handler(request: Request) {
+  return yoga.handleRequest(request, {});
+}
+
+export { handler as GET, handler as POST, handler as OPTIONS };

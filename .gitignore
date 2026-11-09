@@ -29,3 +29,4 @@ playwright/.cache/
 *.pem
 AGENTS.md
 CLAUDE.md
+src/gql/
