@@ -165,3 +165,32 @@ a {
   background: var(--color-primary-soft);
   color: var(--color-on-primary-soft);
 }
+
+.day-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.day-option {
+  padding: var(--space-2) var(--space-3);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.day-option--selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 600;
+}
+
+.day-option:disabled {
+  background: var(--color-surface);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
