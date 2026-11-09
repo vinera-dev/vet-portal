@@ -1,4 +1,4 @@
-import type { Resolvers } from "@/gql/generated";
+import type { Resolvers } from "@/gql/types";
 import { serviceToRest, toAppointment, toSlot } from "./mappers";
 import { DateScalar, LocalDateTimeScalar } from "./scalars";
 

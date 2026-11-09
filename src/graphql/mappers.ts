@@ -1,4 +1,4 @@
-import type { Appointment, AppointmentStatus, ServiceType, Slot } from "@/gql/generated";
+import type { Appointment, AppointmentStatus, ServiceType, Slot } from "@/gql/types";
 import { timeOf } from "@/lib/datetime";
 import type { RestAppointment, ServiceType as RestServiceType } from "@/server/vet-api/types";
 

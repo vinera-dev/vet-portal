@@ -1,0 +1,6 @@
+query Slots($day: Date!) {
+  slots(day: $day) {
+    start
+    time
+  }
+}

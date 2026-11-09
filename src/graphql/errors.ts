@@ -1,6 +1,6 @@
 import { GraphQLError } from "graphql";
 import { VetApiError, type VetApiErrorCode } from "@/server/vet-api/errors";
-import type { ErrorCode } from "@/gql/generated";
+import type { ErrorCode } from "@/gql/types";
 
 const CODE_MAP: Record<VetApiErrorCode, ErrorCode> = {
   not_found: "NOT_FOUND",

@@ -1,0 +1,11 @@
+mutation RescheduleAppointment($id: ID!, $newStart: LocalDateTime!) {
+  rescheduleAppointment(id: $id, newStart: $newStart) {
+    ...AppointmentFields
+  }
+}
+
+mutation CancelAppointment($id: ID!) {
+  cancelAppointment(id: $id) {
+    ...AppointmentFields
+  }
+}
