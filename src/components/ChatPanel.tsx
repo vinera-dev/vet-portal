@@ -107,6 +107,7 @@ export function ChatPanel({ send = sendChatMessage }: ChatPanelProps) {
         aria-live="polite"
         aria-relevant="additions"
         aria-label="Conversation"
+        tabIndex={0}
         className="chat-log"
       >
         {messages.length === 0 ? (

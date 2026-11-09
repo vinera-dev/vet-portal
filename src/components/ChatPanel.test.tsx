@@ -13,6 +13,7 @@ describe("ChatPanel", () => {
     const log = screen.getByRole("log", { name: "Conversation" });
     expect(log).toHaveAttribute("aria-live", "polite");
     expect(log).toHaveAttribute("aria-relevant", "additions");
+    expect(log).toHaveAttribute("tabindex", "0");
   });
 
   it("sends a message and shows the reply inside the live region", async () => {
