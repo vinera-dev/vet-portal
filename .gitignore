@@ -28,5 +28,4 @@ playwright/.cache/
 .DS_Store
 *.pem
 AGENTS.md
-CLAUDE.md
 src/gql/
