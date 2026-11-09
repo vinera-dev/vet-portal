@@ -11,7 +11,12 @@ function routeFetch(backend: typeof fetch) {
       ...init,
       headers: { ...(init?.headers as Record<string, string>), ...(cookie ? { cookie } : {}) },
     });
-    const response = await handleChatPost(request, { api, secure: false });
+    const response = await handleChatPost(request, {
+      api,
+      secure: false,
+      userId: "user-a",
+      secret: "unit-test-secret",
+    });
     const set = response.headers.get("set-cookie");
     if (set) {
       cookie = set.split(";")[0];

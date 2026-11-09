@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { openSession, sealSession } from "./session-binding";
 import type { VetApi } from "./vet-api/client";
 import { VetApiError } from "./vet-api/errors";
 import type { RestSource } from "./vet-api/types";
@@ -74,11 +75,13 @@ function errorResponse(status: number, code: string, message: string): Response 
 export interface ChatHandlerOptions {
   api: VetApi;
   secure: boolean;
+  userId: string;
+  secret: string;
 }
 
 export async function handleChatPost(
   request: Request,
-  { api, secure }: ChatHandlerOptions,
+  { api, secure, userId, secret }: ChatHandlerOptions,
 ): Promise<Response> {
   let json: unknown;
   try {
@@ -95,7 +98,11 @@ export async function handleChatPost(
     );
   }
 
-  const sessionId = readCookie(request.headers.get("cookie"), CHAT_COOKIE);
+  const sessionId = openSession(
+    readCookie(request.headers.get("cookie"), CHAT_COOKIE),
+    userId,
+    secret,
+  );
 
   try {
     const reply = await api.chat({ message: parsed.data.message, session_id: sessionId });
@@ -107,7 +114,10 @@ export async function handleChatPost(
       sources: reply.sources,
     };
     const response = Response.json(payload, { headers: { "cache-control": "no-store" } });
-    response.headers.append("set-cookie", sessionCookie(reply.session_id, secure));
+    response.headers.append(
+      "set-cookie",
+      sessionCookie(sealSession(userId, reply.session_id, secret), secure),
+    );
     return response;
   } catch (error) {
     if (error instanceof VetApiError) {
