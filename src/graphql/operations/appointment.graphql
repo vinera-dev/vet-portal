@@ -1,0 +1,14 @@
+fragment AppointmentFields on Appointment {
+  id
+  tutorName
+  petName
+  service
+  start
+  status
+}
+
+query AppointmentByCode($id: ID!) {
+  appointment(id: $id) {
+    ...AppointmentFields
+  }
+}

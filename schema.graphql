@@ -1,0 +1,66 @@
+type Appointment {
+  id: ID!
+  petName: String!
+  service: ServiceType!
+  start: LocalDateTime!
+  status: AppointmentStatus!
+  tutorName: String!
+}
+
+enum AppointmentStatus {
+  CANCELLED
+  SCHEDULED
+}
+
+input BookAppointmentInput {
+  petName: String!
+  service: ServiceType!
+  start: LocalDateTime!
+  tutorName: String!
+}
+
+type Clinic {
+  closesAt: String!
+  name: String!
+  opensAt: String!
+  slotMinutes: Int!
+}
+
+scalar Date
+
+enum ErrorCode {
+  INVALID_STATUS
+  NOT_FOUND
+  OUTSIDE_BUSINESS_HOURS
+  PAST_SLOT
+  SLOT_UNAVAILABLE
+  UPSTREAM_ERROR
+  UPSTREAM_UNAVAILABLE
+  VALIDATION_ERROR
+}
+
+scalar LocalDateTime
+
+type Mutation {
+  bookAppointment(input: BookAppointmentInput!): Appointment!
+  cancelAppointment(id: ID!): Appointment!
+  rescheduleAppointment(id: ID!, newStart: LocalDateTime!): Appointment!
+}
+
+type Query {
+  appointment(id: ID!): Appointment!
+  clinic: Clinic!
+  slots(day: Date!): [Slot!]!
+}
+
+enum ServiceType {
+  CONSULTATION
+  EXAM
+  GROOMING
+  VACCINATION
+}
+
+type Slot {
+  start: LocalDateTime!
+  time: String!
+}
