@@ -265,3 +265,25 @@ a {
   color: var(--color-danger);
   font-weight: 600;
 }
+
+.stack {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+}
