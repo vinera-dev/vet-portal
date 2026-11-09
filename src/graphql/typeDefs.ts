@@ -14,6 +14,17 @@ export const typeDefs = `
     CANCELLED
   }
 
+  enum ErrorCode {
+    NOT_FOUND
+    SLOT_UNAVAILABLE
+    INVALID_STATUS
+    PAST_SLOT
+    OUTSIDE_BUSINESS_HOURS
+    VALIDATION_ERROR
+    UPSTREAM_UNAVAILABLE
+    UPSTREAM_ERROR
+  }
+
   type Clinic {
     name: String!
     opensAt: String!

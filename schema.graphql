@@ -28,6 +28,17 @@ type Clinic {
 
 scalar Date
 
+enum ErrorCode {
+  INVALID_STATUS
+  NOT_FOUND
+  OUTSIDE_BUSINESS_HOURS
+  PAST_SLOT
+  SLOT_UNAVAILABLE
+  UPSTREAM_ERROR
+  UPSTREAM_UNAVAILABLE
+  VALIDATION_ERROR
+}
+
 scalar LocalDateTime
 
 type Mutation {
