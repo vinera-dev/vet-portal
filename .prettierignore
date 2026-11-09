@@ -1,0 +1,7 @@
+.next
+coverage
+node_modules
+package-lock.json
+src/gql
+playwright-report
+test-results
