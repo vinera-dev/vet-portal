@@ -4,6 +4,7 @@ const createConfig = nextJest({ dir: "./" });
 
 const shared = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  moduleNameMapper: { "^@/(.*)$": "<rootDir>/src/$1" },
   modulePathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/e2e/"],
 };
 
