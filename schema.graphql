@@ -32,9 +32,12 @@ scalar LocalDateTime
 
 type Mutation {
   bookAppointment(input: BookAppointmentInput!): Appointment!
+  cancelAppointment(id: ID!): Appointment!
+  rescheduleAppointment(id: ID!, newStart: LocalDateTime!): Appointment!
 }
 
 type Query {
+  appointment(id: ID!): Appointment!
   clinic: Clinic!
   slots(day: Date!): [Slot!]!
 }

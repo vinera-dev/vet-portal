@@ -45,9 +45,12 @@ export const typeDefs = `
   type Query {
     clinic: Clinic!
     slots(day: Date!): [Slot!]!
+    appointment(id: ID!): Appointment!
   }
 
   type Mutation {
     bookAppointment(input: BookAppointmentInput!): Appointment!
+    rescheduleAppointment(id: ID!, newStart: LocalDateTime!): Appointment!
+    cancelAppointment(id: ID!): Appointment!
   }
 `;

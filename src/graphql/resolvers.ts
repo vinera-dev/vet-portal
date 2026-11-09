@@ -13,6 +13,7 @@ export const resolvers: Resolvers = {
       slotMinutes: 30,
     }),
     slots: async (_parent, { day }, { api }) => (await api.listSlots(day)).map(toSlot),
+    appointment: async (_parent, { id }, { api }) => toAppointment(await api.getAppointment(id)),
   },
   Mutation: {
     bookAppointment: async (_parent, { input }, { api }) =>
@@ -24,5 +25,9 @@ export const resolvers: Resolvers = {
           start: input.start,
         }),
       ),
+    rescheduleAppointment: async (_parent, { id, newStart }, { api }) =>
+      toAppointment(await api.rescheduleAppointment(id, { new_start: newStart })),
+    cancelAppointment: async (_parent, { id }, { api }) =>
+      toAppointment(await api.cancelAppointment(id)),
   },
 };
